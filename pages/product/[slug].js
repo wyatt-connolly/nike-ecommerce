@@ -20,8 +20,10 @@ import urlFor from "../../lib/imageUrlBuilder";
 import { Store } from "../../lib/Store";
 import axios from "axios";
 import { useSnackbar } from "notistack";
+import { useRouter } from "next/router";
 
 function ProductInfo({ product }) {
+  const router = useRouter();
   const {
     state: { cart },
     dispatch,
@@ -50,6 +52,7 @@ function ProductInfo({ product }) {
     enqueueSnackbar(`${product.name} added to the cart`, {
       variant: "success",
     });
+    router.push("/cart");
   };
 
   return (

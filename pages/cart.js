@@ -8,21 +8,34 @@ import {
   TableRow,
   TableCell,
   TableHead,
+  TableBody,
   Select,
   MenuItem,
+  Card,
+  List,
+  ListItem,
+  Container,
 } from "@mui/material";
 import Layout from "../components/Layout";
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import { Store } from "../lib/Store";
+import Link from "next/link";
 
 function CartScreen() {
   const {
-    state: { cart },
+    state: {
+      cart: { cartItems },
+    },
     dispatch,
   } = useContext(Store);
+  const updateCartHandler = async (item, quantity) => {};
+  const removeItemHandler = (item) => {};
+
   return (
-    <Layout title="Shopping Cart">
-      <Typography component="h1" variant="h1">
+    <Container maxWidth="xl">
+      <Typography component="h1" variant="h4">
         Shopping Cart
       </Typography>
       {cartItems.length === 0 ? (
@@ -97,14 +110,25 @@ function CartScreen() {
           <Grid item md={3} xs={12}>
             <Card>
               <List>
-                <ListItem></ListItem>
+                <ListItem>
+                  <Typography variant="h5">
+                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{" "}
+                    items) : ${" "}
+                    {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Button fullWidth color="primary" variant="contained">
+                    Checkout
+                  </Button>
+                </ListItem>
               </List>
             </Card>
           </Grid>
         </Grid>
       )}
-    </Layout>
+    </Container>
   );
 }
 
-export default cart;
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
