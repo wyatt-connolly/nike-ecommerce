@@ -10,11 +10,9 @@ import ResponsiveAppBar from "../components/Nav";
 export default function Index({ products }) {
   return (
     <>
-      <Container maxWidth="xl">
-        <Banner />
-        <Products products={products} />
-        {/* Footer */}
-      </Container>
+      <Banner />
+      <Products products={products} />
+      {/* Footer */}
     </>
   );
 }

@@ -11,7 +11,7 @@ import urlFor from "../lib/imageUrlBuilder";
 import { styled } from "@mui/system";
 import Link from "next/link";
 
-function ProductItem({ product }) {
+function ProductItem({ product, handleAddToCart }) {
   return (
     <Link href={`/product/${product.slug.current}`}>
       <Card
@@ -38,7 +38,9 @@ function ProductItem({ product }) {
           </Typography>
 
           <Link href={`/product/${product.slug.current}`}>
-            <Button>Add to cart</Button>
+            <Button onClick={() => handleAddToCart(product)}>
+              Add to cart
+            </Button>
           </Link>
         </CardContent>
       </Card>

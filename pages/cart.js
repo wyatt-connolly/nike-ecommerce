@@ -58,7 +58,7 @@ function CartScreen() {
   };
 
   return (
-    <Container maxWidth="xl">
+    <>
       <Typography component="h1" variant="h4">
         Shopping Cart
       </Typography>
@@ -145,7 +145,7 @@ function CartScreen() {
           </Card>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 }
 

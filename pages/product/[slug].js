@@ -60,49 +60,47 @@ function ProductInfo({ product }) {
 
   return (
     <>
-      <Container container="true" maxWidth="xl">
-        <Grid container spacing={{ xs: 2, md: 4, lg: 6 }}>
-          <Grid item xs={12} md={6}>
-            <Image
-              src={urlFor(product.image)}
-              layout="responsive"
-              width={640}
-              height={640}
-              priority="true"
-            />
-          </Grid>
-          <Grid item xs={12} md={6} sx={{ placeSelf: "center" }}>
-            <Box>
-              <Typography variant="h4" gutterBottom>
-                {product.name}
-              </Typography>
-              <Typography variant="subtitle1" gutterBottom>
-                {product.category}
-              </Typography>
-              <Typography variant="subtitle1" gutterBottom>
-                ${product.price}
-              </Typography>
-              <Typography variant="body1" gutterBottom sx={{ my: 3 }}>
-                {product.description}
-              </Typography>
-              <Typography variant="subtitle1">
-                Reviews ({product.numReviews})
-              </Typography>
-              <Rating
-                name="half-rating"
-                defaultValue={product.rating}
-                precision={0.25}
-                readOnly
-              />
-              <Box>
-                <Button onClick={handleAddToCart} variant="contained">
-                  add to cart
-                </Button>
-              </Box>
-            </Box>
-          </Grid>
+      <Grid container spacing={{ xs: 2, md: 4, lg: 6 }}>
+        <Grid item xs={12} md={6}>
+          <Image
+            src={urlFor(product.image)}
+            layout="responsive"
+            width={640}
+            height={640}
+            priority="true"
+          />
         </Grid>
-      </Container>
+        <Grid item xs={12} md={6} sx={{ placeSelf: "center" }}>
+          <Box>
+            <Typography variant="h4" gutterBottom>
+              {product.name}
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              {product.category}
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              ${product.price}
+            </Typography>
+            <Typography variant="body1" gutterBottom sx={{ my: 3 }}>
+              {product.description}
+            </Typography>
+            <Typography variant="subtitle1">
+              Reviews ({product.numReviews})
+            </Typography>
+            <Rating
+              name="half-rating"
+              defaultValue={product.rating}
+              precision={0.25}
+              readOnly
+            />
+            <Box>
+              <Button onClick={handleAddToCart} variant="contained">
+                add to cart
+              </Button>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
     </>
   );
 }

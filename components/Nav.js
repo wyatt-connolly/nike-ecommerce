@@ -22,7 +22,7 @@ import { useSnackbar } from "notistack";
 const pages = ["Shop", "About"];
 
 const ResponsiveAppBar = () => {
-  const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const { cart } = state;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -125,7 +125,7 @@ const ResponsiveAppBar = () => {
             </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ display: "flex", alignItems: "center", flexGrow: 0 }}>
             <Link href="cart">
               {cart.cartItems.length > 0 ? (
                 <Badge color="secondary" badgeContent={cart.cartItems.length}>
@@ -135,6 +135,11 @@ const ResponsiveAppBar = () => {
               ) : (
                 <LocalMallIcon sx={{ cursor: "pointer" }} />
               )}
+            </Link>
+            <Link href="/login">
+              <Button sx={{ ml: 1 }} color="inherit">
+                Login
+              </Button>
             </Link>
           </Box>
         </Toolbar>

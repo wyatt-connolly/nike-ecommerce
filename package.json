@@ -26,6 +26,7 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-hook-form": "^7.28.1",
     "swr": "^1.2.2"
   },
   "devDependencies": {
