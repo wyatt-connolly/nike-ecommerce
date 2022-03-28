@@ -46,6 +46,7 @@ function ProductInfo({ product }) {
         countInStock: product.countInStock,
         slug: product.slug.current,
         price: product.price,
+        image: product.image,
         quantity,
       },
     });
@@ -55,13 +56,15 @@ function ProductInfo({ product }) {
     router.push("/cart");
   };
 
+  console.log(product);
+
   return (
     <>
       <Container container="true" maxWidth="xl">
         <Grid container spacing={{ xs: 2, md: 4, lg: 6 }}>
           <Grid item xs={12} md={6}>
             <Image
-              src={urlFor(product.image).url()}
+              src={urlFor(product.image)}
               layout="responsive"
               width={640}
               height={640}
@@ -93,7 +96,7 @@ function ProductInfo({ product }) {
               />
               <Box>
                 <Button onClick={handleAddToCart} variant="contained">
-                  add to bag
+                  add to cart
                 </Button>
               </Box>
             </Box>

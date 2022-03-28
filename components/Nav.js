@@ -13,10 +13,17 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import Link from "next/link";
+import { useContext } from "react";
+import { Store } from "../lib/Store";
+import cart from "../pages/cart";
+import { Badge } from "@mui/material";
+import { useSnackbar } from "notistack";
 
 const pages = ["Shop", "About"];
 
 const ResponsiveAppBar = () => {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -119,7 +126,16 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <LocalMallIcon sx={{ cursor: "pointer" }} />
+            <Link href="cart">
+              {cart.cartItems.length > 0 ? (
+                <Badge color="secondary" badgeContent={cart.cartItems.length}>
+                  {" "}
+                  <LocalMallIcon sx={{ cursor: "pointer" }} />
+                </Badge>
+              ) : (
+                <LocalMallIcon sx={{ cursor: "pointer" }} />
+              )}
+            </Link>
           </Box>
         </Toolbar>
       </Container>

@@ -25,11 +25,7 @@ function ProductItem({ product }) {
           "&:hover": { transform: "scale(1.05)" },
         }}
       >
-        <CardMedia
-          component="img"
-          image={urlFor(product.image).url()}
-          height={320}
-        />
+        <CardMedia component="img" image={urlFor(product.image)} height={320} />
         <CardContent>
           <Typography gutterBottom variant="h5">
             {product.name}
@@ -40,8 +36,9 @@ function ProductItem({ product }) {
           <Typography gutterBottom variant="subtitle1">
             {product.category}
           </Typography>
+
           <Link href={`/product/${product.slug.current}`}>
-            <Button>Learn More</Button>
+            <Button>Add to cart</Button>
           </Link>
         </CardContent>
       </Card>
