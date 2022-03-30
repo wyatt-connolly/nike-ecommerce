@@ -22,7 +22,7 @@ function LoginScreen() {
     control,
     formState: { errors },
   } = useForm();
-  const submitHandler = async (email, password) => {};
+  const submitHandler = async ({ email, password }) => {};
   return (
     <>
       <Box

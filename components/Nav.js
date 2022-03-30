@@ -18,12 +18,13 @@ import { Store } from "../lib/Store";
 import cart from "../pages/cart";
 import { Badge } from "@mui/material";
 import { useSnackbar } from "notistack";
+import { AccountCircle } from "@mui/icons-material";
 
 const pages = ["Shop", "About"];
 
 const ResponsiveAppBar = () => {
   const { state } = useContext(Store);
-  const { cart } = state;
+  const { cart, userInfo } = state;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -136,11 +137,25 @@ const ResponsiveAppBar = () => {
                 <LocalMallIcon sx={{ cursor: "pointer" }} />
               )}
             </Link>
-            <Link href="/login">
-              <Button sx={{ ml: 1 }} color="inherit">
-                Login
-              </Button>
-            </Link>
+            {userInfo ? (
+              <Link href="/profile">
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </Link>
+            ) : (
+              <Link href="/login">
+                <Button sx={{ ml: 1 }} color="inherit">
+                  Login
+                </Button>
+              </Link>
+            )}
           </Box>
         </Toolbar>
       </Container>
