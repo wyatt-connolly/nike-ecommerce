@@ -6,9 +6,11 @@ import client from "../../../lib/sanity";
 const handler = nc();
 
 handler.post(async (req, res) => {
-  const user = await client.fetch(`*[_type == "user" && email == $email][0]`, {
+  const query = `*[_type == "user" && email == $email][0]`;
+  const param = {
     email: req.body.email,
-  });
+  };
+  const user = await client.fetch(query, param);
   if (user && bcrypt.compareSync(req.body.password, user.password)) {
     const token = signToken({
       _id: user._id,
@@ -21,10 +23,9 @@ handler.post(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      token,
     });
   } else {
-    res.status(401).send({ message: "Invalid email or password" });
+    res.send(401).send({ message: "Invalid email or password" });
   }
 });
 
