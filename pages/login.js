@@ -15,6 +15,8 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Layout from "../components/Layout";
 import Link from "next/link";
+import { useSnackbar } from "notistack";
+import axios from "axios";
 
 function LoginScreen() {
   const {
@@ -22,7 +24,20 @@ function LoginScreen() {
     control,
     formState: { errors },
   } = useForm();
-  const submitHandler = async ({ email, password }) => {};
+  const { enqueueSnackbar } = useSnackbar();
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const { data } = await axios.post("/api/users/login", {
+        email,
+        password,
+      });
+      dispatch({ type: "USER_LOGIN", payload: data });
+      jsCookie.set("userInfo", JSON.stringify(data));
+      router.push("/");
+    } catch (err) {
+      enqueueSnackbar(err.message, { variant: "error" });
+    }
+  };
   return (
     <>
       <Box
