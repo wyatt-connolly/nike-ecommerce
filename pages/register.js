@@ -20,6 +20,7 @@ import axios from "axios";
 import jsCookie from "js-cookie";
 import { useRouter } from "next/router";
 import { Store } from "../lib/Store";
+import { getError } from "../lib/error";
 
 function RegisterScreen() {
   const { state, dispatch } = useContext(Store);
@@ -54,7 +55,7 @@ function RegisterScreen() {
       jsCookie.set("userInfo", JSON.stringify(data));
       router.push("/");
     } catch (err) {
-      enqueueSnackbar(err.message, { variant: "error" });
+      enqueueSnackbar(getError(err), { variant: "error" });
     }
   };
   return (

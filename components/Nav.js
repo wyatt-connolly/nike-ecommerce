@@ -19,13 +19,28 @@ import cart from "../pages/cart";
 import { Badge } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { AccountCircle } from "@mui/icons-material";
+import { useRouter } from "next/router";
+import jsCookie from "js-cookie";
 
 const pages = ["Shop", "About"];
 
 const ResponsiveAppBar = () => {
-  const { state } = useContext(Store);
+  const router = useRouter();
+  const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const loginMenuCloseHandler = (e, redirect) => {
+    setAnchorEl(null);
+    if (redirect) {
+      router.push(redirect);
+    }
+  };
+
+  const loginClickHandler = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -35,6 +50,13 @@ const ResponsiveAppBar = () => {
     setAnchorElNav(null);
   };
 
+  const logoutClickHandler = () => {
+    setAnchorEl(null);
+    dispatch({ type: "USER_LOGOUT" });
+    jsCookie.remove("userInfo");
+    jsCookie.remove("cartItems");
+    router.push("/");
+  };
   return (
     <AppBar position="sticky" sx={{ mb: 4 }}>
       <Container maxWidth="xl">
@@ -138,17 +160,32 @@ const ResponsiveAppBar = () => {
               )}
             </Link>
             {userInfo ? (
-              <Link href="/profile">
+              <>
                 <IconButton
                   size="large"
                   aria-label="account of current user"
-                  aria-controls="menu-appbar"
+                  aria-controls="simple-menu"
                   aria-haspopup="true"
                   color="inherit"
+                  onClick={loginClickHandler}
                 >
                   <AccountCircle />
                 </IconButton>
-              </Link>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={loginMenuCloseHandler}
+                >
+                  <MenuItem
+                    onClick={(e) => loginMenuCloseHandler(e, "/profile")}
+                  >
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={logoutClickHandler}>Logout</MenuItem>
+                </Menu>
+              </>
             ) : (
               <Link href="/login">
                 <Button sx={{ ml: 1 }} color="inherit">

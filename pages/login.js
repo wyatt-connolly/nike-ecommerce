@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import {
   Box,
@@ -17,8 +17,21 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import { useSnackbar } from "notistack";
 import axios from "axios";
+import { Store } from "../lib/Store";
+import { useRouter } from "next/router";
+import jsCookie from "js-cookie";
+import { getError } from "../lib/error";
 
 function LoginScreen() {
+  const { state, dispatch } = useContext(Store);
+  const { userInfo } = state;
+  const router = useRouter();
+  useEffect(() => {
+    if (userInfo) {
+      router.push("/");
+    }
+  }, [router, userInfo]);
+
   const {
     handleSubmit,
     control,
@@ -35,7 +48,7 @@ function LoginScreen() {
       jsCookie.set("userInfo", JSON.stringify(data));
       router.push("/");
     } catch (err) {
-      enqueueSnackbar(err.message, { variant: "error" });
+      enqueueSnackbar(getError(err), { variant: "error" });
     }
   };
   return (
