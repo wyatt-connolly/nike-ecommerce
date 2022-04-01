@@ -56,6 +56,7 @@ const ResponsiveAppBar = () => {
     jsCookie.remove("userInfo");
     jsCookie.remove("cartItems");
     jsCookie.remove("shippingAddress");
+    jsCookie.remove("paymentMethod");
     router.push("/");
   };
   return (
