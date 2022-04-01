@@ -25,8 +25,10 @@ import Link from "next/link";
 import urlFor from "../lib/imageUrlBuilder";
 import axios from "axios";
 import { useSnackbar } from "notistack";
+import { useRouter } from "next/router";
 
 function CartScreen() {
+  const router = useRouter();
   const {
     state: {
       cart: { cartItems },
@@ -137,7 +139,14 @@ function CartScreen() {
                 </Typography>
               </ListItem>
               <ListItem>
-                <Button fullWidth color="primary" variant="contained">
+                <Button
+                  fullWidth
+                  color="primary"
+                  variant="contained"
+                  onClick={() => {
+                    router.push("/shipping");
+                  }}
+                >
                   Checkout
                 </Button>
               </ListItem>

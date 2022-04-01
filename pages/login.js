@@ -26,11 +26,12 @@ function LoginScreen() {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
   const router = useRouter();
+  const { redirect } = router.query;
   useEffect(() => {
     if (userInfo) {
-      router.push("/");
+      router.push(redirect || "/");
     }
-  }, [router, userInfo]);
+  }, [router, userInfo, redirect]);
 
   const {
     handleSubmit,
@@ -46,7 +47,7 @@ function LoginScreen() {
       });
       dispatch({ type: "USER_LOGIN", payload: data });
       jsCookie.set("userInfo", JSON.stringify(data));
-      router.push("/");
+      router.push(redirect || "/");
     } catch (err) {
       enqueueSnackbar(getError(err), { variant: "error" });
     }
@@ -146,7 +147,10 @@ function LoginScreen() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href={"/register"} variant="body2">
+              <Link
+                href={`/register?redirect=${redirect || "/"}`}
+                variant="body2"
+              >
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
