@@ -10,7 +10,7 @@ import Layout from "../components/Layout";
 import { StoreProvider } from "../lib/Store";
 import { Snackbar } from "@mui/material";
 import { SnackbarProvider } from "notistack";
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -30,7 +30,9 @@ export default function MyApp(props) {
         >
           <StoreProvider>
             <Layout>
-              <Component {...pageProps} />
+              <PayPalScriptProvider deferLoading={true}>
+                <Component {...pageProps} />
+              </PayPalScriptProvider>
             </Layout>
           </StoreProvider>
         </SnackbarProvider>
