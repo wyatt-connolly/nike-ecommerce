@@ -1,9 +1,10 @@
-import * as React from "react";
+import { useContext, useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import { InputBase } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
@@ -13,7 +14,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import Link from "next/link";
-import { useContext } from "react";
 import { Store } from "../lib/Store";
 import cart from "../pages/cart";
 import { Badge } from "@mui/material";
@@ -21,6 +21,9 @@ import { useSnackbar } from "notistack";
 import { AccountCircle } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import jsCookie from "js-cookie";
+import axios from "axios";
+import { getError } from "../lib/error";
+import SearchIcon from "@mui/icons-material/Search";
 
 const pages = ["Shop", "About"];
 
@@ -28,8 +31,8 @@ const ResponsiveAppBar = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const loginMenuCloseHandler = (e, redirect) => {
     setAnchorEl(null);
@@ -59,6 +62,31 @@ const ResponsiveAppBar = () => {
     jsCookie.remove("paymentMethod");
     router.push("/");
   };
+
+  const { enqueueSnackbar } = useSnackbar();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/categories`);
+        setCategories(data);
+      } catch (err) {
+        enqueueSnackbar(getError(err), { variant: "error" });
+      }
+    };
+    fetchCategories();
+  }, [enqueueSnackbar]);
+
+  const [query, setQuery] = useState("");
+  const queryChangeHandler = (e) => {
+    setQuery(e.target.value);
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    router.push(`/search?query=${query}`);
+  };
+
   return (
     <AppBar position="sticky" sx={{ mb: 4 }}>
       <Container maxWidth="xl">
@@ -106,15 +134,15 @@ const ResponsiveAppBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <Link href="/">
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{pages[0]}</Typography>
-                </MenuItem>
-              </Link>
-
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">{pages[1]}</Typography>
-              </MenuItem>
+              {categories.map((category, index) => (
+                <Box>
+                  <Link key={category} href={`/search?category=${category}`}>
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{category}</Typography>
+                    </MenuItem>
+                  </Link>
+                </Box>
+              ))}
             </Menu>
           </Box>
           <Link href="/">
@@ -131,23 +159,20 @@ const ResponsiveAppBar = () => {
             </Typography>
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link href="/">
-              <Button
-                key={pages[0]}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {pages[0]}
-              </Button>
-            </Link>
-            <Button
-              key={pages[1]}
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              {pages[1]}
-            </Button>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+            component="form"
+            onSubmit={submitHandler}
+          >
+            {" "}
+            <InputBase
+              name="query"
+              placeholder="Search products"
+              onChange={queryChangeHandler}
+            />
+            <IconButton type="submit" aria-label="search">
+              <SearchIcon />
+            </IconButton>
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 0 }}>
@@ -162,7 +187,7 @@ const ResponsiveAppBar = () => {
               )}
             </Link>
             {userInfo ? (
-              <>
+              <div>
                 <IconButton
                   size="large"
                   aria-label="account of current user"
@@ -192,7 +217,7 @@ const ResponsiveAppBar = () => {
                   </MenuItem>
                   <MenuItem onClick={logoutClickHandler}>Logout</MenuItem>
                 </Menu>
-              </>
+              </div>
             ) : (
               <Link href="/login">
                 <Button sx={{ ml: 1 }} color="inherit">
