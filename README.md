@@ -24,7 +24,7 @@ This project was made using the follow technologies:
 - Next-Connect
 - MUI
 
-# Features
+# :rocket: Features
 - Sign-in and register
 - List Products
 - Filter products by Category
