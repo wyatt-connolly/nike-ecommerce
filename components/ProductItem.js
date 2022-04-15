@@ -21,7 +21,6 @@ function ProductItem({ product, addToCartHandler }) {
           cursor: "pointer",
           alignItems: "center",
           textAlign: "center",
-          "&:hover": { transform: "scale(1.05)" },
         }}
       >
         <CardMedia
