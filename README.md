@@ -1,6 +1,6 @@
 # Ecommerce site built with Next.js 
 
-| Ecommerce made with Node.js
+| Ecommerce site made with Node.js
 
 ![pf66TUt](https://user-images.githubusercontent.com/88942814/163514527-846cc051-8589-4576-b4de-33063ec3ed83.png)
 
