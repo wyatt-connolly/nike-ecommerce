@@ -6,15 +6,15 @@
 
 # 📌 Table of Contents
 
-- [Demo Website](#eyes-demo-website)
-- [Technologies](#computer-technologies)
-- [Features](#rocket-features)
+- [Demo Website](demo-website)
+- [Technologies](#technologies)
+- [Features](#features)
 
-# 👀 Demo Website
+# Demo Website
 
 demo: https://nike-knockoffs.vercel.app/
 
-# 💻 Technologies
+# Technologies
 
 This project was made using the follow technologies:
 
@@ -24,7 +24,7 @@ This project was made using the follow technologies:
 - Next-Connect
 - MUI
 
-# 🚀 Features
+# Features
 - Sign-in and register
 - List Products
 - Filter products by Category
