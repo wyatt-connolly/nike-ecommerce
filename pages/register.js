@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Layout from "../components/Layout";
-import Link from "next/link";
+import Link from "../src/Link";
 import { useSnackbar } from "notistack";
 import axios from "axios";
 import jsCookie from "js-cookie";
@@ -60,7 +60,7 @@ function RegisterScreen() {
     }
   };
   return (
-    <>
+    <Layout title="Register">
       <Box
         sx={{
           marginTop: 8,
@@ -222,7 +222,7 @@ function RegisterScreen() {
           </Grid>
         </Box>
       </Box>
-    </>
+    </Layout>
   );
 }
 

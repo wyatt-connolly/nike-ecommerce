@@ -21,7 +21,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { Store } from "../utils/Store";
-import Link from "next/link";
+import Link from "../src/Link";
 import urlForThumbnail from "../utils/image";
 import axios from "axios";
 import { useSnackbar } from "notistack";
@@ -60,7 +60,7 @@ function CartScreen() {
   };
 
   return (
-    <>
+    <Layout title="Shopping Cart">
       <Typography component="h1" variant="h4">
         Shopping Cart
       </Typography>
@@ -150,7 +150,7 @@ function CartScreen() {
           </Card>
         </Grid>
       </Grid>
-    </>
+    </Layout>
   );
 }
 

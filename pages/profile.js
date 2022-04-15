@@ -61,7 +61,7 @@ function ProfileScreen() {
     }
   };
   return (
-    <>
+    <Layout title="Profile">
       <Typography
         sx={{ mt: 8, textAlign: "center" }}
         component="h1"
@@ -192,7 +192,7 @@ function ProfileScreen() {
           </ListItem>
         </List>
       </Form>
-    </>
+    </Layout>
   );
 }
 

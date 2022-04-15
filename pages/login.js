@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Layout from "../components/Layout";
-import Link from "next/link";
+import Link from "../src/Link";
 import { useSnackbar } from "notistack";
 import axios from "axios";
 import { Store } from "../utils/Store";
@@ -54,7 +54,7 @@ function LoginScreen() {
     }
   };
   return (
-    <>
+    <Layout title="Login">
       <Form onSubmit={handleSubmit(submitHandler)}>
         <Box
           sx={{
@@ -152,7 +152,7 @@ function LoginScreen() {
           </Grid>
         </Box>
       </Form>
-    </>
+    </Layout>
   );
 }
 

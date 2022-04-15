@@ -12,6 +12,7 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import jsCookie from "js-cookie";
+import Layout from "../components/Layout";
 
 export default function ShippingScreen() {
   const {
@@ -58,7 +59,7 @@ export default function ShippingScreen() {
   };
 
   return (
-    <>
+    <Layout title="Shipping Address">
       <CheckoutWizard activeStep={1}></CheckoutWizard>
       <Box
         sx={{ my: 4 }}
@@ -241,6 +242,6 @@ export default function ShippingScreen() {
           </ListItem>
         </List>
       </Box>
-    </>
+    </Layout>
   );
 }

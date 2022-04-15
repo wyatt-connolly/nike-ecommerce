@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
-import Layout from "../components/Layout";
 import { StoreProvider } from "../utils/Store";
 import { Snackbar } from "@mui/material";
 import { SnackbarProvider } from "notistack";
@@ -29,11 +28,9 @@ export default function MyApp(props) {
           anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
           <StoreProvider>
-            <Layout>
-              <PayPalScriptProvider deferLoading={true}>
-                <Component {...pageProps} />
-              </PayPalScriptProvider>
-            </Layout>
+            <PayPalScriptProvider deferLoading={true}>
+              <Component {...pageProps} />
+            </PayPalScriptProvider>
           </StoreProvider>
         </SnackbarProvider>
       </ThemeProvider>

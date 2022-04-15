@@ -25,6 +25,7 @@ import { getError } from "../utils/error";
 import axios from "axios";
 import jsCookie from "js-cookie";
 import dynamic from "next/dynamic";
+import Layout from "../components/Layout";
 
 function PlaceOrderScreen() {
   const { enqueueSnackbar } = useSnackbar();
@@ -87,7 +88,7 @@ function PlaceOrderScreen() {
   };
 
   return (
-    <>
+    <Layout title="Place Order">
       <CheckoutWizard activeStep={3}></CheckoutWizard>
       <Typography sx={{ my: 4 }} component="h1" variant="h5">
         Place Order
@@ -248,7 +249,7 @@ function PlaceOrderScreen() {
           </Card>
         </Grid>
       </Grid>
-    </>
+    </Layout>
   );
 }
 

@@ -10,13 +10,14 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import Link from "next/link";
+import Link from "../src/Link";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useReducer } from "react";
 import { getError } from "../utils/error";
 import { Store } from "../utils/Store";
 import dynamic from "next/dynamic";
+import Layout from "../components/Layout";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -61,7 +62,7 @@ function OrderHistoryScreen() {
     fetchOrders();
   }, [router, userInfo]);
   return (
-    <>
+    <Layout title="Order History">
       <Typography component="h1" variant="h5">
         Order History
       </Typography>
@@ -101,7 +102,7 @@ function OrderHistoryScreen() {
           </Table>
         </TableContainer>
       )}
-    </>
+    </Layout>
   );
 }
 export default dynamic(() => Promise.resolve(OrderHistoryScreen), {

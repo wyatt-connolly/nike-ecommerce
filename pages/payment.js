@@ -16,6 +16,7 @@ import { Store } from "../utils/Store";
 import { useSnackbar } from "notistack";
 import jsCookie from "js-cookie";
 import Form from "../components/Form";
+import Layout from "../components/Layout";
 
 export default function PaymentScreen() {
   const enqueueSnackbar = useSnackbar();
@@ -45,7 +46,7 @@ export default function PaymentScreen() {
     }
   };
   return (
-    <>
+    <Layout title="Payment Method">
       <CheckoutWizard activeStep={2}></CheckoutWizard>
       <Form sx={{ my: 4 }} onSubmit={submitHandler}>
         <Typography component="h1" variant="h5">
@@ -96,6 +97,6 @@ export default function PaymentScreen() {
           </ListItem>
         </List>
       </Form>
-    </>
+    </Layout>
   );
 }

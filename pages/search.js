@@ -158,8 +158,7 @@ export default function SearchScreen() {
   };
 
   return (
-    <>
-      {" "}
+    <Layout title="search">
       <Grid container spacing={2}>
         <Grid item md={3}>
           <List>
@@ -252,6 +251,6 @@ export default function SearchScreen() {
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </Layout>
   );
 }

@@ -14,7 +14,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import Link from "next/link";
+import Link from "../../src/Link";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useContext, useEffect, useReducer } from "react";
@@ -25,6 +25,7 @@ import axios from "axios";
 import { Router } from "@mui/icons-material";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useSnackbar } from "notistack";
+import Layout from "../../components/Layout";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -152,8 +153,7 @@ function OrderScreen({ params }) {
   }
 
   return (
-    <>
-      {" "}
+    <Layout title={`Order ${orderId}`}>
       <Typography sx={{ my: 4 }} component="h1" variant="h5">
         Order {orderId}
       </Typography>
@@ -320,7 +320,7 @@ function OrderScreen({ params }) {
           </Grid>
         </Grid>
       )}
-    </>
+    </Layout>
   );
 }
 

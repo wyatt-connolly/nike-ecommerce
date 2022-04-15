@@ -1,4 +1,4 @@
-import react, { useContext, useState } from "react";
+import react, { useContext, useState, useEffect } from "react";
 import client from "../../utils/client";
 import Image from "next/image";
 import {
@@ -8,6 +8,8 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  List,
+  ListItem,
   Button,
   Typography,
   Stack,
@@ -15,20 +17,45 @@ import {
   Grid,
   Rating,
   Snackbar,
+  CircularProgress,
 } from "@mui/material";
 import { urlFor, urlForThumbnail } from "../../utils/image";
 import { Store } from "../../utils/Store";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/router";
+import Layout from "../../components/Layout";
+import Link from "../../src/Link";
 
-function ProductInfo({ product }) {
+function ProductInfo(props) {
   const router = useRouter();
+  const { slug } = props;
   const {
     state: { cart },
     dispatch,
   } = useContext(Store);
   const { enqueueSnackbar } = useSnackbar();
+  const [state, setState] = useState({
+    product: null,
+    loading: true,
+    error: "",
+  });
+  const { product, loading, error } = state;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const product = await client.fetch(
+          `
+            *[_type == "product" && slug.current == $slug][0]`,
+          { slug }
+        );
+        setState({ ...state, product, loading: false });
+      } catch (err) {
+        setState({ ...state, error: err.message, loading: false });
+      }
+    };
+    fetchData();
+  }, []);
 
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
@@ -56,60 +83,99 @@ function ProductInfo({ product }) {
     router.push("/cart");
   };
 
-  console.log(product);
-
   return (
-    <>
-      <Grid container spacing={{ xs: 2, md: 4, lg: 6 }}>
-        <Grid item xs={12} md={6}>
-          <Image
-            src={urlFor(product.image)}
-            layout="responsive"
-            width={640}
-            height={640}
-            priority="true"
-          />
-        </Grid>
-        <Grid item xs={12} md={6} sx={{ placeSelf: "center" }}>
-          <Box>
-            <Typography variant="h4" gutterBottom>
-              {product.name}
-            </Typography>
-            <Typography variant="subtitle1" gutterBottom>
-              {product.category}
-            </Typography>
-            <Typography variant="subtitle1" gutterBottom>
-              ${product.price}
-            </Typography>
-            <Typography variant="body1" gutterBottom sx={{ my: 3 }}>
-              {product.description}
-            </Typography>
-            <Typography variant="subtitle1">
-              Reviews ({product.numReviews})
-            </Typography>
-            <Rating
-              name="half-rating"
-              defaultValue={product.rating}
-              precision={0.25}
-              readOnly
-            />
-            <Box>
-              <Button onClick={addToCartHandler} variant="contained">
-                add to cart
-              </Button>
-            </Box>
+    <Layout title={product?.title}>
+      {loading ? (
+        <CircularProgress />
+      ) : error ? (
+        <Alert variant="error">{error}</Alert>
+      ) : (
+        <Box>
+          <Box sx={{ my: 8 }}>
+            <Link href="/" passHref>
+              <Typography sx={{ cursor: "pointer" }}>Back To Result</Typography>
+            </Link>
           </Box>
-        </Grid>
-      </Grid>
-    </>
+          <Grid container spacing={1}>
+            <Grid item md={6} xs={12}>
+              <Image
+                src={urlFor(product.image)}
+                alt={product.name}
+                layout="responsive"
+                width={640}
+                height={640}
+              />
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <List>
+                <ListItem>
+                  <Typography component="h1" variant="h5">
+                    {product.name}
+                  </Typography>
+                </ListItem>
+                <ListItem>Category: {product.category}</ListItem>
+                <ListItem>Brand: {product.brand}</ListItem>
+                <ListItem>
+                  <Rating value={product.rating} readOnly></Rating>
+                  <Typography sx={{ mx: 2 }} variant="subtitle2">
+                    ({product.numReviews} reviews)
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography>Description: {product.description}</Typography>
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <Card>
+                <List>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography>Price</Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography>${product.price}</Typography>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography>Status</Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography>
+                          {product.countInStock > 0
+                            ? "In stock"
+                            : "Unavailable"}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                  <ListItem>
+                    <Button
+                      onClick={addToCartHandler}
+                      fullWidth
+                      variant="contained"
+                    >
+                      Add to cart
+                    </Button>
+                  </ListItem>
+                </List>
+              </Card>
+            </Grid>
+          </Grid>
+        </Box>
+      )}
+    </Layout>
   );
 }
 
-export async function getServerSideProps(context) {
-  const pageSlug = context.params.slug;
-  const query = `*[_type == "product" && slug.current == $pageSlug][0]`;
-  const product = await client.fetch(query, { pageSlug });
-  return { props: { product } };
+export function getServerSideProps(context) {
+  return {
+    props: { slug: context.params.slug },
+  };
 }
 
 export default ProductInfo;
