@@ -6,15 +6,15 @@
 
 # 📌 Table of Contents
 
-- [Demo Website](#demo-website)
-- [Technologies](#technologies)
+- [Demo Website](#eyes-demo-website)
+- [Technologies](#computer-technologies)
 - [Features](#rocket-features)
 
-# Demo Website
+# :eyes: Demo Website
 
 demo: https://nike-knockoffs.vercel.app/
 
-# Technologies
+# :computer: Technologies
 
 This project was made using the follow technologies:
 
