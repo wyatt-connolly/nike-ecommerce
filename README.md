@@ -9,8 +9,8 @@
 - [Demo Website](#eyes-demo-website)
 - [Technologies](#computer-technologies)
 - [Features](#rocket-features)
-- [Visual Demo](#crystal_ball-visual-demo)
 - [Lessons](#pencil-lessons)
+- [Visual Demo](#crystal_ball-visual-demo)
 
 # :eyes: Demo Website
 
