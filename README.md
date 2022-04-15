@@ -7,14 +7,14 @@
 # 📌 Table of Contents
 
 - [Demo Website](https://nike-knockoffs.vercel.app/)
-- [Technologies](#💻-technologies)
+- [Technologies](#technologies)
 - [Features](#features)
 
 # 👀 Demo Website
 
 demo: https://nike-knockoffs.vercel.app/
 
-# 💻 Technologies
+# Technologies
 
 This project was made using the follow technologies:
 
