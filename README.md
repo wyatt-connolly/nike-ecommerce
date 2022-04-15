@@ -7,7 +7,7 @@
 # 📌 Table of Contents
 
 - [Demo Website](https://nike-knockoffs.vercel.app/)
-- [Technologies](#technologies)
+- [Technologies](#Technologies)
 - [Features](#features)
 
 # 👀 Demo Website
