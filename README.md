@@ -50,5 +50,5 @@ This project was made using the follow technologies:
 **Order History**
 ![qFEBA6d](https://user-images.githubusercontent.com/88942814/163518337-46b088d7-877b-4cb2-ad14-deba1d2cea08.png)
 
-**SignIn & Register**
+**Sign-In & Register**
 ![oIP5zh8](https://user-images.githubusercontent.com/88942814/163518398-f006a832-b7af-47ec-bee7-73a97f83bfeb.png)
