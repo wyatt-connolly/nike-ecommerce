@@ -8,7 +8,7 @@
 
 - [Demo Website](#demo-website)
 - [Technologies](#technologies)
-- [Features](#features)
+- [Features](#rocket-features)
 
 # Demo Website
 
