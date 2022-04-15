@@ -8,9 +8,7 @@
 
 - [Demo Website](https://nike-knockoffs.vercel.app/)
 - [Technologies](#technologies)
-- Features
-- How to run
-- Found a bug? Missing a specific feature?
+- [Features](#features)
 
 # 👀 Demo Website
 
@@ -19,3 +17,17 @@ demo: https://nike-knockoffs.vercel.app/
 # 💻 Technologies
 
 This project was made using the follow technologies:
+
+- Next.js
+- Sanity
+- Vercel
+- Next-Connect
+- MUI
+
+# 🚀 Features
+- Sign-in and register
+- List Products
+- Filter products by Category
+- Add products to Cart
+- Checkout w/ Paypal
+
