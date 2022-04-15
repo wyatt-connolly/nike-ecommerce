@@ -1,46 +1,54 @@
-# Next.js example
+# Ecommerce site built with Next.js 
 
-## How to use
+> Ecommerce site made with Node.js
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+# 📌 Table of Contents
 
-<!-- #default-branch-switch -->
+- [Demo Website](#eyes-demo-website)
+- [Technologies](#computer-technologies)
+- [Features](#rocket-features)
+- [Visual Demo](#crystal_ball-visual-demo)
 
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
-cd nextjs
-```
+# :eyes: Demo Website
 
-Install it and run:
+:point_right: demo: https://nike-knockoffs.vercel.app/
 
-```sh
-npm install
-npm run dev
-```
+# :computer: Technologies
 
-or:
+This project was made using the follow technologies:
 
-<!-- #default-branch-switch -->
+- [Next.js](https://nextjs.org/)
+- [Sanity](https://www.sanity.io/)
+- [Vercel](https://vercel.com/)
+- [Next-Connect](https://www.npmjs.com/package/next-connect)
+- [MUI](https://mui.com/)
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/nextjs)
+# :rocket: Features
+- Sign-in and register
+- List Products
+- Filter products by Category
+- Add products to Cart
+- Checkout w/ Paypal
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/nextjs)
+# :crystal_ball: Visual Demo
 
-## The idea behind the example
+**Homepage**
+![pf66TUt](https://user-images.githubusercontent.com/88942814/163514527-846cc051-8589-4576-b4de-33063ec3ed83.png)
 
-The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/guides/interoperability/#styled-components).
+**Product Info**
+![hftHBhx](https://user-images.githubusercontent.com/88942814/163517949-625727f8-dfe8-4942-87ea-28b830ab9eb7.png)
 
-## The link component
+**Checkout**
+![ULc5kYo](https://user-images.githubusercontent.com/88942814/163518011-dea7b47c-b614-46d9-84a0-4ba898003084.png)
 
-Next.js has [a custom Link component](https://nextjs.org/docs/api-reference/next/link).
-The example folder provides adapters for usage with MUI.
-More information [in the documentation](https://mui.com/guides/routing/#next-js).
+**Paypal Payment**
+![CKoLW0A](https://user-images.githubusercontent.com/88942814/163518122-1386371a-bce1-4ce7-85d1-5ffdef51721f.png)
 
-## What's next?
+**Order Success Page**
+![mbqOKVW](https://user-images.githubusercontent.com/88942814/163518498-66e895f5-fdcd-405a-8973-6f4a795dbe00.png)
 
-<!-- #default-branch-switch -->
+**Order History**
+![qFEBA6d](https://user-images.githubusercontent.com/88942814/163518337-46b088d7-877b-4cb2-ad14-deba1d2cea08.png)
 
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/getting-started/templates/) section.
+**Sign-In & Register**
+![oIP5zh8](https://user-images.githubusercontent.com/88942814/163518398-f006a832-b7af-47ec-bee7-73a97f83bfeb.png)
