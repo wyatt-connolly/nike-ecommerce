@@ -12,7 +12,7 @@
 
 # :eyes: Demo Website
 
-:point_right demo: https://nike-knockoffs.vercel.app/
+:point_right: demo: https://nike-knockoffs.vercel.app/
 
 # :computer: Technologies
 
