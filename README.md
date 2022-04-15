@@ -18,11 +18,11 @@
 
 This project was made using the follow technologies:
 
-- Next.js
-- Sanity
-- Vercel
-- Next-Connect
-- MUI
+- [Next.js](https://nextjs.org/)
+- [Sanity](https://www.sanity.io/)
+- [Vercel](https://vercel.com/)
+- [Next-Connect](https://www.npmjs.com/package/next-connect)
+- [MUI](https://mui.com/)
 
 # :rocket: Features
 - Sign-in and register
