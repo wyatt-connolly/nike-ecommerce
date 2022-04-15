@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Store } from "../lib/Store";
+import { Store } from "../utils/Store";
 import CheckoutWizard from "../components/CheckoutWizard";
 import {
   Box,

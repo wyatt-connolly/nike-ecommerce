@@ -7,7 +7,7 @@ function Banner() {
       <Card
         sx={{
           mt: 2,
-          p: { xs: 4, sm: 11, md: 14, lg: 17, xl: 20 },
+          p: 6,
           textAlign: "center",
         }}
       >

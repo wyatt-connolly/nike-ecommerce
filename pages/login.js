@@ -17,10 +17,11 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import { useSnackbar } from "notistack";
 import axios from "axios";
-import { Store } from "../lib/Store";
+import { Store } from "../utils/Store";
 import { useRouter } from "next/router";
 import jsCookie from "js-cookie";
-import { getError } from "../lib/error";
+import { getError } from "../utils/error";
+import Form from "../components/Form";
 
 function LoginScreen() {
   const { state, dispatch } = useContext(Store);
@@ -32,12 +33,12 @@ function LoginScreen() {
       router.push(redirect || "/");
     }
   }, [router, userInfo, redirect]);
-
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm();
+
   const { enqueueSnackbar } = useSnackbar();
   const submitHandler = async ({ email, password }) => {
     try {
@@ -54,26 +55,22 @@ function LoginScreen() {
   };
   return (
     <>
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
+      <Form onSubmit={handleSubmit(submitHandler)}>
         <Box
-          component="form"
-          onSubmit={handleSubmit(submitHandler)}
-          noValidate
-          sx={{ mt: 1 }}
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+
           <Controller
             name="email"
             control={control}
@@ -91,7 +88,6 @@ function LoginScreen() {
                 label="Email Address"
                 inputProps={{ type: "email" }}
                 error={Boolean(errors.email)}
-                name="email"
                 autoComplete="email"
                 autoFocus
                 helperText={
@@ -136,7 +132,6 @@ function LoginScreen() {
               />
             )}
           ></Controller>
-
           <Button
             type="submit"
             fullWidth
@@ -156,7 +151,7 @@ function LoginScreen() {
             </Grid>
           </Grid>
         </Box>
-      </Box>
+      </Form>
     </>
   );
 }

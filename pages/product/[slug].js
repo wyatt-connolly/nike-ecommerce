@@ -1,5 +1,5 @@
 import react, { useContext, useState } from "react";
-import client from "../../lib/sanity";
+import client from "../../utils/client";
 import Image from "next/image";
 import {
   Alert,
@@ -16,8 +16,8 @@ import {
   Rating,
   Snackbar,
 } from "@mui/material";
-import urlFor from "../../lib/imageUrlBuilder";
-import { Store } from "../../lib/Store";
+import { urlFor, urlForThumbnail } from "../../utils/image";
+import { Store } from "../../utils/Store";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/router";
@@ -30,7 +30,7 @@ function ProductInfo({ product }) {
   } = useContext(Store);
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleAddToCart = async () => {
+  const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
@@ -46,7 +46,7 @@ function ProductInfo({ product }) {
         countInStock: product.countInStock,
         slug: product.slug.current,
         price: product.price,
-        image: product.image,
+        image: urlForThumbnail(product.image),
         quantity,
       },
     });
@@ -94,7 +94,7 @@ function ProductInfo({ product }) {
               readOnly
             />
             <Box>
-              <Button onClick={handleAddToCart} variant="contained">
+              <Button onClick={addToCartHandler} variant="contained">
                 add to cart
               </Button>
             </Box>

@@ -14,8 +14,8 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useReducer } from "react";
-import { getError } from "../lib/error";
-import { Store } from "../lib/Store";
+import { getError } from "../utils/error";
+import { Store } from "../utils/Store";
 import dynamic from "next/dynamic";
 
 function reducer(state, action) {

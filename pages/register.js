@@ -19,8 +19,8 @@ import { useSnackbar } from "notistack";
 import axios from "axios";
 import jsCookie from "js-cookie";
 import { useRouter } from "next/router";
-import { Store } from "../lib/Store";
-import { getError } from "../lib/error";
+import { Store } from "../utils/Store";
+import { getError } from "../utils/error";
 
 function RegisterScreen() {
   const { state, dispatch } = useContext(Store);

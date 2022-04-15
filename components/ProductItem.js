@@ -7,11 +7,10 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import urlFor from "../lib/imageUrlBuilder";
-import { styled } from "@mui/system";
+import { urlForThumbnail } from "../utils/image";
 import Link from "next/link";
 
-function ProductItem({ product, handleAddToCart }) {
+function ProductItem({ product, addToCartHandler }) {
   return (
     <Link href={`/product/${product.slug.current}`}>
       <Card
@@ -25,7 +24,11 @@ function ProductItem({ product, handleAddToCart }) {
           "&:hover": { transform: "scale(1.05)" },
         }}
       >
-        <CardMedia component="img" image={urlFor(product.image)} height={320} />
+        <CardMedia
+          component="img"
+          image={urlForThumbnail(product.image)}
+          height={320}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5">
             {product.name}
@@ -38,7 +41,7 @@ function ProductItem({ product, handleAddToCart }) {
           </Typography>
 
           <Link href={`/product/${product.slug.current}`}>
-            <Button onClick={() => handleAddToCart(product)}>
+            <Button onClick={() => addToCartHandler(product)}>
               Add to cart
             </Button>
           </Link>

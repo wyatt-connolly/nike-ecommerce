@@ -1,7 +1,7 @@
 import axios from "axios";
 import nc from "next-connect";
-import { isAuth } from "../../../../lib/auth";
-import config from "../../../../lib/config";
+import { isAuth } from "../../../../utils/auth";
+import config from "../../../../utils/config";
 
 const handler = nc();
 

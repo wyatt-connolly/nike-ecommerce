@@ -18,10 +18,10 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import CheckoutWizard from "../components/CheckoutWizard";
-import urlFor from "../lib/imageUrlBuilder";
-import { Store } from "../lib/Store";
+import urlFor from "../utils/image";
+import { Store } from "../utils/Store";
 import { useSnackbar } from "notistack";
-import { getError } from "../lib/error";
+import { getError } from "../utils/error";
 import axios from "axios";
 import jsCookie from "js-cookie";
 import dynamic from "next/dynamic";
@@ -161,7 +161,7 @@ function PlaceOrderScreen() {
                           <TableCell>
                             <Link href={`/product/${item.slug}`}>
                               <Image
-                                src={urlFor(item.image)}
+                                src={item.image}
                                 alt={item.name}
                                 width={50}
                                 height={50}

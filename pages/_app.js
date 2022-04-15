@@ -7,7 +7,7 @@ import { CacheProvider } from "@emotion/react";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import Layout from "../components/Layout";
-import { StoreProvider } from "../lib/Store";
+import { StoreProvider } from "../utils/Store";
 import { Snackbar } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";

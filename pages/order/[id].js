@@ -15,13 +15,12 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
-import urlFor from "../../lib/imageUrlBuilder";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useContext, useEffect, useReducer } from "react";
-import { Store } from "../../lib/Store";
+import { Store } from "../../utils/Store";
 import { useRouter } from "next/router";
-import { getError } from "../../lib/error";
+import { getError } from "../../utils/error";
 import axios from "axios";
 import { Router } from "@mui/icons-material";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
@@ -46,7 +45,7 @@ function reducer(state, action) {
   }
 }
 function OrderScreen({ params }) {
-  const { enqueueSnackbar } = useSnackbar;
+  const { enqueueSnackbar } = useSnackbar();
   const { id: orderId } = params;
   const [{ loading, error, order, successPay }, dispatch] = useReducer(
     reducer,
@@ -87,6 +86,7 @@ function OrderScreen({ params }) {
         const { data } = await axios.get(`/api/orders/${orderId}`, {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
+
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
@@ -223,7 +223,7 @@ function OrderScreen({ params }) {
                             <TableCell>
                               <Link href={`/product/${item.slug}`}>
                                 <Image
-                                  src={urlFor(item.image)}
+                                  src={item.image}
                                   alt={item.name}
                                   width={50}
                                   height={50}

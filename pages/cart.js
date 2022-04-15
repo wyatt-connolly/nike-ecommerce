@@ -20,9 +20,9 @@ import Layout from "../components/Layout";
 import React, { useContext } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { Store } from "../lib/Store";
+import { Store } from "../utils/Store";
 import Link from "next/link";
-import urlFor from "../lib/imageUrlBuilder";
+import urlForThumbnail from "../utils/image";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { useRouter } from "next/router";
@@ -83,11 +83,7 @@ function CartScreen() {
                     <TableCell>
                       <Link href={`/product/${item.slug}`}>
                         <a>
-                          <Image
-                            src={urlFor(item.image)}
-                            height={50}
-                            width={50}
-                          />
+                          <Image src={item.image} height={50} width={50} />
                         </a>
                       </Link>
                     </TableCell>

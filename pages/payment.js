@@ -12,9 +12,10 @@ import {
 import React, { useState, useContext, useEffect } from "react";
 import CheckoutWizard from "../components/CheckoutWizard";
 import { useRouter } from "next/router";
-import { Store } from "../lib/Store";
+import { Store } from "../utils/Store";
 import { useSnackbar } from "notistack";
 import jsCookie from "js-cookie";
+import Form from "../components/Form";
 
 export default function PaymentScreen() {
   const enqueueSnackbar = useSnackbar();
@@ -46,7 +47,7 @@ export default function PaymentScreen() {
   return (
     <>
       <CheckoutWizard activeStep={2}></CheckoutWizard>
-      <Box sx={{ my: 4 }} component="form" onSubmit={submitHandler}>
+      <Form sx={{ my: 4 }} onSubmit={submitHandler}>
         <Typography component="h1" variant="h5">
           Payment Method
         </Typography>
@@ -94,7 +95,7 @@ export default function PaymentScreen() {
             </Button>
           </ListItem>
         </List>
-      </Box>
+      </Form>
     </>
   );
 }

@@ -1,16 +1,14 @@
 import nc from "next-connect";
 import bcrypt from "bcryptjs";
-import { signToken } from "../../../lib/auth";
-import client from "../../../lib/sanity";
+import { signToken } from "../../../utils/auth";
+import client from "../../../utils/client";
 
 const handler = nc();
 
 handler.post(async (req, res) => {
-  const query = `*[_type == "user" && email == $email][0]`;
-  const param = {
+  const user = await client.fetch(`*[_type == "user" && email == $email][0]`, {
     email: req.body.email,
-  };
-  const user = await client.fetch(query, param);
+  });
   if (user && bcrypt.compareSync(req.body.password, user.password)) {
     const token = signToken({
       _id: user._id,
@@ -23,9 +21,10 @@ handler.post(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      token,
     });
   } else {
-    res.send(401).send({ message: "Invalid email or password" });
+    res.status(401).send({ message: "Invalid email or password" });
   }
 });
 

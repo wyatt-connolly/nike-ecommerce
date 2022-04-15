@@ -13,8 +13,9 @@ import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
 import React, { useContext, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Store } from "../lib/Store";
-import { getError } from "../lib/error";
+import { Store } from "../utils/Store";
+import { getError } from "../utils/error";
+import Form from "../components/Form";
 
 function ProfileScreen() {
   const router = useRouter();
@@ -61,10 +62,14 @@ function ProfileScreen() {
   };
   return (
     <>
-      <Typography component="h1" variant="h5">
+      <Typography
+        sx={{ mt: 8, textAlign: "center" }}
+        component="h1"
+        variant="h5"
+      >
         Profile
       </Typography>
-      <Box component="form" onSubmit={handleSubmit(submitHandler)}>
+      <Form sx={{ my: 3 }} onSubmit={handleSubmit(submitHandler)}>
         <List>
           <ListItem>
             <Controller
@@ -186,7 +191,7 @@ function ProfileScreen() {
             </Button>
           </ListItem>
         </List>
-      </Box>
+      </Form>
     </>
   );
 }

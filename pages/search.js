@@ -9,25 +9,21 @@ import {
   Rating,
   Select,
   Typography,
+  Box,
 } from "@mui/material";
-import { Box } from "@mui/system";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useSnackbar } from "notistack";
 import React, { useContext, useEffect, useState } from "react";
 import ProductItem from "../components/ProductItem";
-import client from "../lib/sanity";
-import { urlFor } from "../lib/imageUrlBuilder";
-import { Store } from "../lib/Store";
+import client from "../utils/client";
+import { urlFor } from "../utils/image";
+import { Store } from "../utils/Store";
 
 const prices = [
   {
-    name: "$100 to $150",
-    value: "100-150",
-  },
-  {
-    name: "$151 to $200",
-    value: "151-200",
+    name: "$100 to $200",
+    value: "100-200",
   },
   {
     name: "$201 to $250",
@@ -168,7 +164,7 @@ export default function SearchScreen() {
         <Grid item md={3}>
           <List>
             <ListItem>
-              <Box>
+              <Box sx={{ width: "100%", mr: 3 }}>
                 <Typography>Categories</Typography>
                 <Select fullWidth value={category} onChange={categoryHandler}>
                   <MenuItem value="all">All</MenuItem>
@@ -182,7 +178,7 @@ export default function SearchScreen() {
               </Box>
             </ListItem>
             <ListItem>
-              <Box>
+              <Box sx={{ width: "100%", mr: 3 }}>
                 <Typography>Prices</Typography>
                 <Select value={price} onChange={priceHandler} fullWidth>
                   <MenuItem value="all">All</MenuItem>
@@ -195,7 +191,7 @@ export default function SearchScreen() {
               </Box>
             </ListItem>
             <ListItem>
-              <Box>
+              <Box sx={{ width: "100%", mr: 3 }}>
                 <Typography>Ratings</Typography>
                 <Select value={rating} onChange={ratingHandler} fullWidth>
                   <MenuItem value="all">All</MenuItem>
@@ -227,7 +223,7 @@ export default function SearchScreen() {
 
             <Grid item>
               <Typography component="span">Sort by</Typography>
-              <Select value={sort} onChange={sortHandler}>
+              <Select sx={{ ml: 2 }} value={sort} onChange={sortHandler}>
                 <MenuItem value="default">Default</MenuItem>
                 <MenuItem value="lowest">Price: Low to High</MenuItem>
                 <MenuItem value="highest">Price: High to Low</MenuItem>
@@ -242,9 +238,9 @@ export default function SearchScreen() {
             ) : error ? (
               <Alert>{error}</Alert>
             ) : (
-              <Grid container spacing={3}>
+              <Grid sx={{ my: 3 }} container spacing={3}>
                 {products.map((product) => (
-                  <Grid item md={4} key={product.name}>
+                  <Grid sx={{ width: "100%" }} item md={4} key={product.name}>
                     <ProductItem
                       product={product}
                       addToCartHandler={addToCartHandler}

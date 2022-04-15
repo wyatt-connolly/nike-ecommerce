@@ -1,5 +1,5 @@
 import nc from "next-connect";
-import client from "../../../lib/sanity";
+import client from "../../../utils/client";
 
 const handler = nc();
 
