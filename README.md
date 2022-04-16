@@ -40,7 +40,7 @@ Going into this project, I had a decent amount of React.js, HTML, CSS and JS exp
 I'm not going to sugarcoat this experience. It was challenging. Going from CRA (create-react-app) to Next.js made things easier since Next is an amazing boilerplate, but I did face some hurdles. Learning all the npm packages needed to make an Ecommersite site (next-connect, jsonwebtoken, next-connect) and structuring a big project with multiple pages and components was intimidating. However, once I broke down the tasks to do and components to complete each day, the process became easier. If I could complete a task everyday, that gave me confidence to complete all the other tasks until the Ecommerce site was finally complete. 
 
 So what did I gain from this experience? I learned: 
-- How Next.js works and why it's a superior alternative to CRA. 
+- How Next.js works. 
 - Connect to a backend database (Sanity) and how to communicate with it
 - Display information from an API
 - Create a database that has multiple products and sell those products using a payment method
