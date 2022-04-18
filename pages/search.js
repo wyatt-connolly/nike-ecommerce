@@ -19,6 +19,7 @@ import ProductItem from "../components/ProductItem";
 import client from "../utils/client";
 import { urlFor } from "../utils/image";
 import { Store } from "../utils/Store";
+import Layout from "../components/Layout";
 
 const prices = [
   {
