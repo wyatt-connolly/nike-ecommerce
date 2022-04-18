@@ -177,7 +177,7 @@ function Layout({ title, description, children }) {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {categories.map((category, index) => (
+                {categories.map((category) => (
                   <Box>
                     <Link key={category} href={`/search?category=${category}`}>
                       <MenuItem onClick={handleCloseNavMenu}>
