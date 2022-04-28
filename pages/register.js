@@ -190,7 +190,7 @@ function RegisterScreen() {
                 label="Confirm Password"
                 type="confirmPassword"
                 id="confirmPassword"
-                inputProps={{ type: "confirmPassword" }}
+                inputProps={{ type: "password" }}
                 error={Boolean(errors.confirmPassword)}
                 autoComplete="current-confirmPassword"
                 helperText={
