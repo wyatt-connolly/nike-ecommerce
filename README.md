@@ -35,18 +35,19 @@ This project was made using the follow technologies:
 
 # :pencil: Lessons
 
-Going into this project, I had a decent amount of React.js, HTML, CSS and JS experience. I also tinkered with MUI and had the general gist of it. Some projects that I did before this were the typical To-Do list and Pokedex mockup, so nothing extraordinary. I felt the above was somewhat easy, so I wanted to challenge myself to a bigger project. One that I could apply to the real world and a potential client if needed. That's where this project comes into play: the Nike Knockoff Ecommerce site. 
+Going into this project, I had a decent amount of React.js, HTML, CSS, and JS experience. I also tinkered with MUI and had the general gist of it. Some projects that I did before this were the typical To-Do list and Pokedex mockup, so nothing extraordinary. I felt the above was somewhat easy, so I wanted to challenge myself to a bigger project. One that I could apply to the real world and a potential client if needed. That's where this project comes into play: the Nike Knockoff ecommerce site.
 
-I'm not going to sugarcoat this experience. It was challenging. Going from CRA (create-react-app) to Next.js made things easier since Next is an amazing boilerplate, but I did face some hurdles. Learning all the npm packages needed to make an Ecommersite site (next-connect, jsonwebtoken, next-connect) and structuring a big project with multiple pages and components was intimidating. However, once I broke down the tasks to do and components to complete each day, the process became easier. If I could complete a task everyday, that gave me confidence to complete all the other tasks until the Ecommerce site was finally complete. 
+I'm not going to sugarcoat this experience. It was challenging. Going from CRA (create-react-app) to Next.js made things easier since Next is an amazing boilerplate, but I did face some hurdles. Learning all the npm packages needed to make an Ecommersite site (next-connect, jsonwebtoken, next-connect) and structuring a big project with multiple pages and components was intimidating. However, once I broke down the tasks to do and components to complete each day, the process became easier. If I could complete a task every day, that gave me the confidence to complete all the other tasks until the E-commerce site was finally complete.
 
-So what did I gain from this experience? I learned: 
-- How Next.js works. 
-- Connect to a backend database (Sanity) and how to communicate with it
-- Display information from an API
-- Create a database that has multiple products and sell those products using a payment method
-- Deploy a site using Vercel
-- Use a CSS library to create a responsive UI and streamline production
-- ...and many more things.
+So what did I gain from this experience? I learned:
+
+How Next.js works.
+Connect to a backend database (Sanity) and how to communicate with it
+Display information from an API
+Create a database that has multiple products and sell those products using a payment method
+Deploy a site using Vercel
+Use a CSS library to create a responsive UI and streamline production
+...and many more things.
 
 # :crystal_ball: Visual Demo
 
