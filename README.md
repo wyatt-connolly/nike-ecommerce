@@ -41,12 +41,12 @@ I'm not going to sugarcoat this experience. It was challenging. Going from CRA (
 
 So what did I gain from this experience? I learned:
 
-How Next.js works.
-Connect to a backend database (Sanity) and how to communicate with it
-Display information from an API
-Create a database that has multiple products and sell those products using a payment method
-Deploy a site using Vercel
-Use a CSS library to create a responsive UI and streamline production
+- How Next.js works.
+- Connect to a backend database (Sanity) and how to communicate with it
+- Display information from an API
+- Create a database that has multiple products and sell those products using a payment method
+- Deploy a site using Vercel
+- Use a CSS library to create a responsive UI and streamline production
 
 # :crystal_ball: Visual Demo
 
