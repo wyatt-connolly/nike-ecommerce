@@ -47,7 +47,6 @@ Display information from an API
 Create a database that has multiple products and sell those products using a payment method
 Deploy a site using Vercel
 Use a CSS library to create a responsive UI and streamline production
-...and many more things.
 
 # :crystal_ball: Visual Demo
 
