@@ -13,7 +13,7 @@ function Banner() {
       >
         <CardContent>
           <Typography variant="h3" gutterBottom>
-            Nike Knockoffs
+            Nike Store
           </Typography>
           <Typography variant="subtitle1">
             Your best source for cheap Nikes.
