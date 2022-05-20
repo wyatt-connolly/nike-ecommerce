@@ -62,6 +62,14 @@ This project was made using the follow technologies:
 - Add products to Cart
 - Checkout w/ Paypal
 
+# :house: Local Development
+
+After intalling all dependencies (npm i) run this command:
+
+ `npm run dev`
+
+This will start both server and client in dev mode. The app is now available on localhost:3000.
+
 # :pencil: Lessons
 
 Going into this project, I had a decent amount of React.js, HTML, CSS, and JS experience. I also tinkered with MUI and had the general gist of it. Some projects that I did before this were the typical To-Do list and Pokedex mockup, so nothing extraordinary. I felt the above was somewhat easy, so I wanted to challenge myself to a bigger project. One that I could apply to the real world and a potential client if needed. That's where this project comes into play: the Nike Knockoff eCommerce site.
@@ -76,3 +84,7 @@ So what did I gain from this experience? I learned:
 - Create a database that has multiple products and sell those products using a payment method
 - Deploy a site using Vercel
 - Use a CSS library to create a responsive UI and streamline production
+
+# :link: License
+
+Design and assets belong to [Nike.com](https://www.nike.com)
