@@ -144,7 +144,7 @@ function Layout({ title, description, children }) {
                   display: { xs: "none", md: "flex", cursor: "pointer" },
                 }}
               >
-                Nike Knockoffs
+                Nike Store
               </Typography>
             </Link>
 
@@ -198,7 +198,7 @@ function Layout({ title, description, children }) {
                   display: { xs: "flex", md: "none", cursor: "pointer" },
                 }}
               >
-                Nike Knockoffs
+                Nike Store
               </Typography>
             </Link>
 
